@@ -1,0 +1,92 @@
+.type-chart {
+  font-size: 1em;
+  margin: 0.5em 0 1.5em 0;
+}
+
+.types {
+  margin-bottom: 0.5em;
+}
+
+.type-badge {
+  display: inline-block;
+  padding: 0.2em 0.8em;
+  margin-right: 0.25em;
+  margin-bottom: 0.15em;
+  border-radius: 12px;
+  font-size: 0.95em;
+  font-weight: 600;
+  background: #e0e0e0;
+  color: #222;
+  text-shadow: 0 1px 2px #fff5;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.08);
+  text-transform: capitalize;
+}
+
+// Color codes for each type (simple, feel free to tweak for more vibrancy)
+$type-colors: (
+  normal: #aaa,
+  fire: #f08030,
+  water: #6890f0,
+  electric: #f8d030,
+  grass: #78c850,
+  ice: #98d8d8,
+  fighting: #c03028,
+  poison: #a040a0,
+  ground: #e0c068,
+  flying: #a890f0,
+  psychic: #f85888,
+  bug: #a8b820,
+  rock: #b8a038,
+  ghost: #705898,
+  dragon: #7038f8,
+  dark: #705848,
+  steel: #b8b8d0,
+  fairy: #ee99ac
+);
+
+@each $type, $color in $type-colors {
+  .type-#{$type} {
+    background: $color;
+    color: #fff;
+  }
+}
+
+.effectiveness-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5em;
+}
+.effectiveness-table th,
+.effectiveness-table td {
+  padding: 0.3em 0.5em;
+  text-align: center;
+}
+.effectiveness-table th {
+  background: #f44336;
+  color: #fff;
+}
+.effectiveness-table tr:nth-child(even) {
+  background: #f8f8f8;
+}
+
+.immune {
+  color: #888;
+  font-weight: bold;
+}
+.weak {
+  color: #f44336;
+  font-weight: bold;
+}
+.resist {
+  color: #2196f3;
+  font-weight: bold;
+}
+.neutral {
+  color: #555;
+}
+
+.error {
+  color: #f44336;
+  margin-bottom: 0.5em;
+  font-size: 0.98em;
+}

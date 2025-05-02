@@ -1,0 +1,20 @@
+<div class="team-builder">
+  <h2>Pokémon Team Builder</h2>
+  <div class="team-selection">
+    <app-pokemon-selector (pokemonSelected)="onPokemonSelected($event)"></app-pokemon-selector>
+  </div>
+  <div class="team-slots">
+    <div *ngFor="let pokemon of team; let i = index" class="team-slot">
+      <div *ngIf="pokemon">
+        <strong>{{ pokemon }}</strong>
+        <app-type-chart [pokemonName]="pokemon"></app-type-chart>
+      </div>
+      <div *ngIf="!pokemon">
+        <em>Empty Slot</em>
+      </div>
+    </div>
+  </div>
+  <div class="team-summary">
+    <app-team-summary [team]="team"></app-team-summary>
+  </div>
+</div>

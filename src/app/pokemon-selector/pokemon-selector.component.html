@@ -1,0 +1,30 @@
+<div class="pokemon-selector">
+  <label>Select up to 6 Pokémon:</label>
+  <div *ngIf="loading">Loading Pokémon...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <div class="dropdown-container">
+    <input type="text"
+           placeholder="Type to search..."
+           [(ngModel)]="filter"
+           (input)="filterList()"
+           (focus)="onInputFocus()"
+           (blur)="onInputBlur()"
+           [disabled]="selected.length >= 6">
+    <div class="dropdown-list" *ngIf="dropdownOpen && filteredList.length">
+      <div class="dropdown-item"
+           *ngFor="let name of filteredList"
+           (mousedown)="toggleSelect(name)">
+        {{ name }}
+      </div>
+    </div>
+    <div class="dropdown-list empty" *ngIf="dropdownOpen && !filteredList.length && !loading">
+      <em>No results</em>
+    </div>
+  </div>
+  <div class="selected-list">
+    <span *ngFor="let name of selected" class="selected-chip">
+      {{ name }}
+      <button type="button" (click)="toggleSelect(name)">×</button>
+    </span>
+  </div>
+</div>
