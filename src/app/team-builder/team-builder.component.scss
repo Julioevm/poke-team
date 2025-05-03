@@ -1,3 +1,10 @@
+.team-builder {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+
 .team-slots {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -34,4 +41,11 @@
 .team-slot strong {
   font-size: 1.2rem;
   margin-bottom: 4px;
+}
+
+@media (max-width: 600px) {
+  .team-slots {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+  }
 }
