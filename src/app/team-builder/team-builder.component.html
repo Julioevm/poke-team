@@ -4,7 +4,10 @@
     <app-pokemon-selector (pokemonSelected)="onPokemonSelected($event)"></app-pokemon-selector>
   </div>
   <div class="team-slots">
-    <div *ngFor="let pokemon of team; let i = index" class="team-slot">
+    <div *ngFor="let pokemon of team; let i = index" 
+         class="team-slot" 
+         [class.focused]="focusedSlot === i"
+         (click)="onSlotClick(i)">
       <div *ngIf="pokemon">
         <strong>{{ pokemon }}</strong>
         <app-type-chart [pokemonName]="pokemon"></app-type-chart>
