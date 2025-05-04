@@ -19,11 +19,13 @@ export class TypeChartComponent implements OnChanges {
   effectiveness: TypeEffectiveness = {};
   loading = false;
   error = '';
+  spriteUrl?: string;
   allTypes: string[] = [
     'normal', 'fire', 'water', 'electric', 'grass', 'ice', 'fighting', 'poison',
     'ground', 'flying', 'psychic', 'bug', 'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy'
   ];
   showAll = false;
+  showChart = false;
 
   constructor(private http: HttpClient) {}
 
@@ -38,6 +40,7 @@ export class TypeChartComponent implements OnChanges {
     this.error = '';
     this.types = [];
     this.effectiveness = {};
+    this.spriteUrl = undefined;
     if (!this.pokemonName) {
       this.loading = false;
       return;
@@ -46,6 +49,7 @@ export class TypeChartComponent implements OnChanges {
       .subscribe({
         next: (data) => {
           this.types = data.types.map((t: any) => t.type.name);
+          this.spriteUrl = data.sprites?.front_default || undefined;
           this.calculateEffectiveness();
         },
         error: () => {
@@ -86,5 +90,13 @@ export class TypeChartComponent implements OnChanges {
 
   toggleShowAll() {
     this.showAll = !this.showAll;
+  }
+
+  onMouseEnter() {
+    this.showChart = true;
+  }
+
+  onMouseLeave() {
+    this.showChart = false;
   }
 }

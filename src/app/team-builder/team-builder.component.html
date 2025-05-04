@@ -9,7 +9,6 @@
          [class.focused]="focusedSlot === i"
          (click)="onSlotClick(i)">
       <div *ngIf="pokemon">
-        <strong>{{ pokemon }}</strong>
         <app-type-chart [pokemonName]="pokemon"></app-type-chart>
       </div>
       <div *ngIf="!pokemon">

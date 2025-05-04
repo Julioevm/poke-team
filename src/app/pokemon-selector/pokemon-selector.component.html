@@ -8,14 +8,14 @@
            [(ngModel)]="filter"
            (focus)="onInputFocus()"
            (blur)="onInputBlur()">
-    <div class="dropdown-list" *ngIf="dropdownOpen && pokemonList.length">
+    <div class="dropdown-list" *ngIf="dropdownOpen && filteredPokemonList.length">
       <div class="dropdown-item"
-           *ngFor="let name of pokemonList"
+           *ngFor="let name of filteredPokemonList"
            (mousedown)="toggleSelect(name)">
         {{ name }}
       </div>
     </div>
-    <div class="dropdown-list empty" *ngIf="dropdownOpen && !pokemonList.length && !loading">
+    <div class="dropdown-list empty" *ngIf="dropdownOpen && !filteredPokemonList.length && !loading">
       <em>No results</em>
     </div>
   </div>

@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./pokemon-selector.component.scss']
 })
 export class PokemonSelectorComponent implements OnInit {
-  @Output() pokemonSelected = new EventEmitter<string[]>();
+  @Output() pokemonSelected = new EventEmitter<string>();
   pokemonList: string[] = [];
   loading = false;
   error = '';
@@ -39,7 +39,7 @@ export class PokemonSelectorComponent implements OnInit {
   }
 
   toggleSelect(name: string) {
-    this.pokemonSelected.emit(this.pokemonList);
+    this.pokemonSelected.emit(name);
     this.filter = '';
     this.dropdownOpen = false;
   }
@@ -54,5 +54,11 @@ export class PokemonSelectorComponent implements OnInit {
 
   onInputBlur() {
     setTimeout(() => this.dropdownOpen = false, 150); // Delay so click can register
+  }
+
+  get filteredPokemonList(): string[] {
+    const filterValue = this.filter.trim().toLowerCase();
+    if (!filterValue) return this.pokemonList;
+    return this.pokemonList.filter(name => name.toLowerCase().includes(filterValue));
   }
 }

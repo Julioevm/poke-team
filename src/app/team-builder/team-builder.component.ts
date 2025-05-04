@@ -15,11 +15,11 @@ export class TeamBuilderComponent {
   team: string[] = Array(6).fill(undefined);
   focusedSlot: number = 0;
 
-  onPokemonSelected(selected: string[]) {
+  onPokemonSelected(selected: string) {
     // Set the selected pokemon to the focused slot and move focus to next empty slot
-    if (selected && selected.length > 0) {
+    if (selected) {
       const newTeam = [...this.team];
-      newTeam[this.focusedSlot] = selected[selected.length - 1];
+      newTeam[this.focusedSlot] = selected;
       this.team = newTeam;
       // Move focus to next empty slot
       let next = this.team.findIndex((p, i) => !p && i > this.focusedSlot);
