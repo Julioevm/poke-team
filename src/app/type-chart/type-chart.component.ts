@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 interface TypeEffectiveness {
   [type: string]: number;
@@ -9,7 +10,7 @@ interface TypeEffectiveness {
 @Component({
   selector: 'app-type-chart',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, FormsModule],
   templateUrl: './type-chart.component.html',
   styleUrls: ['./type-chart.component.scss']
 })
@@ -26,6 +27,7 @@ export class TypeChartComponent implements OnChanges {
   ];
   showAll = false;
   showChart = false;
+  showTypeChart = false;
 
   constructor(private http: HttpClient) {}
 
@@ -90,6 +92,10 @@ export class TypeChartComponent implements OnChanges {
 
   toggleShowAll() {
     this.showAll = !this.showAll;
+  }
+
+  toggleTypeChart() {
+    this.showTypeChart = !this.showTypeChart;
   }
 
   onMouseEnter() {

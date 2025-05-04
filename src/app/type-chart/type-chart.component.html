@@ -1,9 +1,14 @@
-<div class="type-chart" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
+<div class="type-chart">
+  <div class="switch-container">
+    <label class="switch">
+      <input type="checkbox" [(ngModel)]="showTypeChart">
+      <span class="slider"></span>
+    </label>
+  </div>
   <div *ngIf="loading">Loading type chart...</div>
   <div *ngIf="error" class="error">{{ error }}</div>
   <div *ngIf="!loading && !error && types.length">
-    <!-- Show summary by default; show chart on hover -->
-    <ng-container *ngIf="!showChart; else chartBlock">
+    <ng-container *ngIf="!showTypeChart; else chartBlock">
       <div class="pokemon-header">
         <img *ngIf="spriteUrl" [src]="spriteUrl" [alt]="pokemonName" class="pokemon-sprite" />
         <span class="pokemon-name">{{ pokemonName | titlecase }}</span>
