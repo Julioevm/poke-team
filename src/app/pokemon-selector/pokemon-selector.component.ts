@@ -28,7 +28,7 @@ export class PokemonSelectorComponent implements OnInit {
 
   fetchPokemonList() {
     this.loading = true;
-    this.http.get<any>('https://pokeapi.co/api/v2/pokemon?limit=151').subscribe({
+    this.http.get<any>('https://pokeapi.co/api/v2/pokemon?limit=1500').subscribe({
       next: (data) => {
         this.pokemonList = data.results.map((p: any) => this.capitalize(p.name));
         this.filteredList = this.pokemonList;
