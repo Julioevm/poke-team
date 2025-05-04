@@ -16,9 +16,6 @@
       <div class="types">
         <span *ngFor="let t of types" class="type-badge type-{{t}}">{{ t | titlecase }}</span>
       </div>
-      <button class="toggle-btn" (click)="toggleShowAll()">
-        {{ showAll ? 'Hide neutral (x1)' : 'Show all types' }}
-      </button>
       <table class="effectiveness-table">
         <thead>
           <tr>
@@ -40,6 +37,9 @@
           </tr>
         </tbody>
       </table>
+      <button class="toggle-btn" (click)="toggleShowAll()">
+        {{ showAll ? 'Hide neutral types' : 'Show all types' }}
+      </button>
     </ng-template>
   </div>
 </div>

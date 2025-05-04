@@ -110,6 +110,21 @@ $type-colors: (
   color: #555;
 }
 
+.toggle-btn {
+  display: block;
+  margin: 0.5em auto;
+  padding: 0.5em 1em;
+  background: #f44336;
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  &:hover {
+    background: #d32f2f;
+  }
+}
+
 .error {
   color: #f44336;
   margin-bottom: 0.5em;
