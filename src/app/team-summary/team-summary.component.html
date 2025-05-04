@@ -1,1 +1,20 @@
-<p>team-summary works!</p>
+<div class="team-summary-table">
+  <div *ngIf="loading">Loading team summary...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <table *ngIf="!loading && !error">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Resistant</th>
+        <th>Weak</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of summary">
+        <td><span class="type-badge type-{{row.type}}">{{ row.type | titlecase }}</span></td>
+        <td [ngStyle]="{'background': getResistColor(row.resistant)}">{{ row.resistant }}</td>
+        <td [ngStyle]="{'background': getWeakColor(row.weak)}">{{ row.weak }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

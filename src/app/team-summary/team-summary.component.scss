@@ -1,0 +1,68 @@
+.team-summary-table {
+  margin: 1em auto;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.team-summary-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1em;
+}
+.team-summary-table th, .team-summary-table td {
+  border: 1px solid #eee;
+  padding: 0.5em 0.7em;
+  text-align: center;
+}
+.team-summary-table th {
+  background: #f44336;
+  color: #fff;
+}
+.type-badge {
+  display: inline-block;
+  padding: 0.2em 0.8em;
+  margin-right: 0.25em;
+  border-radius: 12px;
+  font-size: 0.95em;
+  font-weight: 600;
+  background: #e0e0e0;
+  color: #222;
+  text-shadow: 0 1px 2px #fff5;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.08);
+  text-transform: capitalize;
+  box-sizing: border-box;
+}
+// Color codes for each type (copy from type-chart for consistency)
+$type-colors: (
+  normal: #a8a878,
+  fire: #f08030,
+  water: #6890f0,
+  electric: #f8d030,
+  grass: #78c850,
+  ice: #98d8d8,
+  fighting: #c03028,
+  poison: #a040a0,
+  ground: #e0c068,
+  flying: #a890f0,
+  psychic: #f85888,
+  bug: #a8b820,
+  rock: #b8a038,
+  ghost: #705898,
+  dragon: #7038f8,
+  dark: #705848,
+  steel: #b8b8d0,
+  fairy: #ee99ac
+);
+@each $type, $color in $type-colors {
+  .type-#{$type} {
+    background: $color;
+    color: #fff;
+  }
+}
+.error {
+  color: #f44336;
+  margin-bottom: 0.5em;
+  font-size: 0.98em;
+}
