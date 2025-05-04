@@ -19,20 +19,25 @@
   background: #fafafa;
   border: 2px solid #ccc;
   border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: 1.1rem;
   cursor: pointer;
   transition: border-color 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 8px rgba(0,0,0,0.03);
   overflow-y: auto;
+  box-sizing: border-box ;
+  height: 100%;
 }
 
 .team-slot.focused {
   border-color: #4285f4;
   box-shadow: 0 0 0 3px #90caf9;
+}
+
+.empty-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .team-slot em {
