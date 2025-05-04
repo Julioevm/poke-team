@@ -6,25 +6,17 @@
     <input type="text"
            placeholder="Type to search..."
            [(ngModel)]="filter"
-           (input)="filterList()"
            (focus)="onInputFocus()"
-           (blur)="onInputBlur()"
-           [disabled]="selected.length >= 6">
-    <div class="dropdown-list" *ngIf="dropdownOpen && filteredList.length">
+           (blur)="onInputBlur()">
+    <div class="dropdown-list" *ngIf="dropdownOpen && pokemonList.length">
       <div class="dropdown-item"
-           *ngFor="let name of filteredList"
+           *ngFor="let name of pokemonList"
            (mousedown)="toggleSelect(name)">
         {{ name }}
       </div>
     </div>
-    <div class="dropdown-list empty" *ngIf="dropdownOpen && !filteredList.length && !loading">
+    <div class="dropdown-list empty" *ngIf="dropdownOpen && !pokemonList.length && !loading">
       <em>No results</em>
     </div>
-  </div>
-  <div class="selected-list">
-    <span *ngFor="let name of selected" class="selected-chip">
-      {{ name }}
-      <button type="button" (click)="toggleSelect(name)">×</button>
-    </span>
   </div>
 </div>

@@ -13,8 +13,6 @@ import { FormsModule } from '@angular/forms';
 export class PokemonSelectorComponent implements OnInit {
   @Output() pokemonSelected = new EventEmitter<string[]>();
   pokemonList: string[] = [];
-  filteredList: string[] = [];
-  selected: string[] = [];
   loading = false;
   error = '';
   filter = '';
@@ -31,7 +29,6 @@ export class PokemonSelectorComponent implements OnInit {
     this.http.get<any>('https://pokeapi.co/api/v2/pokemon?limit=1500').subscribe({
       next: (data) => {
         this.pokemonList = data.results.map((p: any) => this.capitalize(p.name));
-        this.filteredList = this.pokemonList;
         this.loading = false;
       },
       error: (err) => {
@@ -42,35 +39,17 @@ export class PokemonSelectorComponent implements OnInit {
   }
 
   toggleSelect(name: string) {
-    if (this.selected.includes(name)) {
-      this.selected = this.selected.filter(p => p !== name);
-    } else if (this.selected.length < 6) {
-      this.selected = [...this.selected, name];
-    }
-    this.pokemonSelected.emit(this.selected);
+    this.pokemonSelected.emit(this.pokemonList);
     this.filter = '';
-    this.filterList();
     this.dropdownOpen = false;
-  }
-
-  isSelected(name: string): boolean {
-    return this.selected.includes(name);
   }
 
   capitalize(name: string): string {
     return name.charAt(0).toUpperCase() + name.slice(1);
   }
 
-  filterList() {
-    const filterLower = this.filter.toLowerCase();
-    this.filteredList = this.pokemonList.filter(name =>
-      name.toLowerCase().includes(filterLower) && !this.selected.includes(name)
-    );
-  }
-
   onInputFocus() {
     this.dropdownOpen = true;
-    this.filterList();
   }
 
   onInputBlur() {
