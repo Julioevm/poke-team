@@ -11,7 +11,7 @@
       <div *ngIf="pokemon">
         <app-type-chart [pokemonName]="pokemon"></app-type-chart>
       </div>
-      <div *ngIf="!pokemon">
+      <div *ngIf="!pokemon" class="empty-slot">
         <em>Empty Slot</em>
       </div>
     </div>
