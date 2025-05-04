@@ -10,7 +10,8 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 16px;
-  margin: 24px 0;
+  margin: auto;
+  max-width: 900px;
 }
 
 .team-slot {
@@ -26,6 +27,7 @@
   cursor: pointer;
   transition: border-color 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  overflow-y: auto;
 }
 
 .team-slot.focused {
